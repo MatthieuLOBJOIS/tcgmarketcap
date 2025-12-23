@@ -1,29 +1,22 @@
 import crypto from "crypto";
-import express from "express";
 
-const app = express();
 const VERIFICATION_TOKEN = "my-ebay-verification-token-123";
 
-app.use(express.json());
+export default function handler(req, res) {
+  if (req.method === "GET") {
+    const challengeCode = req.query.challenge_code;
+    if (!challengeCode) return res.status(400).send("Missing challenge_code");
 
-app.get("/ebay/account-deletion", (req, res) => {
-  const challengeCode = req.query.challenge_code;
+    const hash = crypto
+      .createHash("sha256")
+      .update(challengeCode + VERIFICATION_TOKEN)
+      .digest("hex");
 
-  if (!challengeCode) {
-    return res.status(400).send("Missing challenge_code");
+    res.status(200).json({ challengeResponse: hash });
+  } else if (req.method === "POST") {
+    // Notification eBay (tu peux juste renvoyer 200 OK)
+    res.status(200).send("OK");
+  } else {
+    res.status(405).send("Method not allowed");
   }
-
-  const hash = crypto
-    .createHash("sha256")
-    .update(challengeCode + VERIFICATION_TOKEN)
-    .digest("hex");
-
-  res.json({ challengeResponse: hash });
-});
-
-app.post("/ebay/account-deletion", (req, res) => {
-  // Notification réelle (tu peux ignorer)
-  res.status(200).send("OK");
-});
-
-app.listen(3000, () => console.log("Server running"));
+}
