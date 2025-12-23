@@ -1,6 +1,7 @@
 import crypto from "crypto";
 
-const VERIFICATION_TOKEN = "my-ebay-verification-token-123";
+const VERIFICATION_TOKEN =
+  "db949e180ac8bfd72f03a5db7830eca732cf10b6f8ddd5f769b3c3066b3d5e0a";
 
 export default function handler(req, res) {
   if (req.method === "GET") {
