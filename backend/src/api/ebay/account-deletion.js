@@ -1,10 +1,8 @@
 import crypto from "crypto";
 
-const VERIFICATION_TOKEN =
-  "db949e180ac8bfd72f03a5db7830eca732cf10b6f8ddd5f769b3c3066b3d5e0a";
+const VERIFICATION_TOKEN = "${process.env.VERIFICATION_TOKEN}";
 
-const ENDPOINT =
-  "https://tcgmarketcap-back.vercel.app/api/ebay/account-deletion";
+const ENDPOINT = "${process.env.ENDPOINT}";
 
 export default function handler(req, res) {
   if (req.method === "GET") {
