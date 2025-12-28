@@ -8,7 +8,8 @@
     "start": "node src/server.js",
     "dev": "node --watch src/server.js",
     "update:pokemon": "node src/scripts/getCardsSetsBloc.js",
-    "update:pricing": "node src/scripts/updatePricing.js"
+    "update:pricing": "node src/scripts/updatePricing.js",
+    "update:details": "node src/scripts/updateDetails.js"
   },
   "keywords": [],
   "author": "",

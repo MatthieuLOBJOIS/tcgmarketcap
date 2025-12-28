@@ -76,3 +76,21 @@ router.get("/:bloc/:set/pricing", (req, res) => {
   const pricing = JSON.parse(fs.readFileSync(pricingPath, "utf-8"));
   res.json(pricing);
 });
+
+// ─────────────────────────────
+// 🔹 GET /pokemon/:bloc/:set/details
+// ─────────────────────────────
+router.get("/:bloc/:set/details", (req, res) => {
+  const { bloc, set } = req.params;
+
+  const detailsPath = path.join(DATA_DIR, bloc, set, "details.json");
+
+  if (!fs.existsSync(detailsPath)) {
+    return res.status(404).json({
+      error: `Details introuvables pour ${set}`,
+    });
+  }
+
+  const details = JSON.parse(fs.readFileSync(detailsPath, "utf-8"));
+  res.json(details);
+});
