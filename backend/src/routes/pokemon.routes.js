@@ -58,3 +58,21 @@ router.get("/:bloc/:set", (req, res) => {
 });
 
 export default router;
+
+// ─────────────────────────────
+// 🔹 GET /pokemon/:bloc/:set/pricing
+// ─────────────────────────────
+router.get("/:bloc/:set/pricing", (req, res) => {
+  const { bloc, set } = req.params;
+
+  const pricingPath = path.join(DATA_DIR, bloc, set, "pricing.json");
+
+  if (!fs.existsSync(pricingPath)) {
+    return res.status(404).json({
+      error: `Pricing introuvable pour ${set}`,
+    });
+  }
+
+  const pricing = JSON.parse(fs.readFileSync(pricingPath, "utf-8"));
+  res.json(pricing);
+});

@@ -1,6 +1,6 @@
 import TCGdex from "@tcgdex/sdk";
 import { writeFile, mkdir, readFile } from "fs/promises";
-
+//npm run update:pokemon sv
 const tcgdex = new TCGdex("fr");
 
 async function fetchSerieToFile(blocId) {
