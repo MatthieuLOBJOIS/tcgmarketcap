@@ -1,10 +1,10 @@
 /**
  * Insert or update un bloc nettoyé dans la DB spécifique
- * @param {Object} cleanedData - Résultat de cleanData(bloc, 'bloc')
+ * @param {Object} data - Résultat de cleanData(bloc, 'bloc')
  * @param {mongoose.Model} BlocModel - Modèle Mongoose pour la DB cible
  */
-export const saveCleanData = async (cleanedData, BlocModel) => {
-  const { bloc_id, sets, ...rest } = cleanedData
+export const saveBlocData = async (data, BlocModel) => {
+  const { bloc_id, sets, ...rest } = data
 
   if (!bloc_id) {
     console.error('❌ bloc_id manquant, impossible de sauvegarder')
@@ -16,7 +16,7 @@ export const saveCleanData = async (cleanedData, BlocModel) => {
 
   if (!existingBloc) {
     // Nouveau bloc → insert
-    await new BlocModel(cleanedData).save()
+    await new BlocModel(data).save()
     console.log(`✅ Bloc ajouté: ${bloc_id}`)
     return
   }

@@ -10,7 +10,7 @@
     "update:pricing": "node src/scripts/updatePricing.js",
     "update:details": "node src/scripts/updateDetails.js",
     "update:bloc": "node src/scripts/pokemon/updateBloc.js",
-    "update:cards": "node src/scripts/pokemon/updateCards.js"
+    "update:set": "node src/scripts/pokemon/updateSet.js"
   },
   "keywords": [],
   "author": "",

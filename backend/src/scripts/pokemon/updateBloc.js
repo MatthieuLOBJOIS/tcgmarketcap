@@ -1,10 +1,11 @@
+import 'dotenv/config'
 import mongoose from 'mongoose'
 import { blocSchema } from '../../models/Bloc.js'
 import connectDB from '../../config/db.js'
 
 import TCGdex from '@tcgdex/sdk'
 import cleanData from '../../utils/cleanData.js'
-import { saveCleanData } from '../../utils/saveCleanData.js'
+import { saveBlocData } from '../../utils/saveBlocData.js'
 
 // récupérer les arguments : npm run update:bloc fr sv
 const args = process.argv.slice(2)
@@ -33,7 +34,7 @@ const bloc = await tcgdex.serie.get(blocId)
 const cleaned = cleanData(bloc, 'bloc')
 
 // Enregistrer dans MongoDB
-await saveCleanData(cleaned, BlocModel)
+await saveBlocData(cleaned, BlocModel)
 
 console.log('✅ Import terminé')
 process.exit(0)

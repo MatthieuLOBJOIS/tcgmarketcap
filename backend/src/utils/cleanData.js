@@ -16,7 +16,21 @@ const cleanData = (data, type) => {
     }
   }
   if (type === 'cards') {
-    console.log(type)
+    const cleanCardsData = data.cards.map((card) => ({
+      card_id: card.id,
+      name: card.name,
+      localId: card.localId,
+      image: card.image ?? null,
+    }))
+    return {
+      set_id: data.id,
+      name: data.name,
+      logo: data.logo ?? null,
+      releaseDate: data.releaseDate ?? null,
+      cards: cleanCardsData,
+      serie: data.serie?.id ?? null,
+      abbreviation: data.abbreviation?.official ?? null,
+    }
   }
 }
 
