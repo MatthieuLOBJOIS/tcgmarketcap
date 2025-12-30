@@ -14,6 +14,6 @@ connectDB()
 
 app.use('/', homeRoutes)
 app.use('/ebay', ebayRoutes)
-//app.use('/pokemon', pokemonRoutes)
+app.use('/pokemon', pokemonRoutes)
 
 export default app

@@ -1,5 +1,3 @@
-import 'dotenv/config'
-
 import mongoose from 'mongoose'
 import { blocSchema } from '../../models/Bloc.js'
 import connectDB from '../../config/db.js'
