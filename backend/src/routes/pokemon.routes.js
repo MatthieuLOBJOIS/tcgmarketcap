@@ -1,12 +1,11 @@
-import { Router } from "express";
-import mongoose from "mongoose";
-import BlockSchema from "../models/Blocks.js"; // chemin vers ton schema
+import { Router } from 'express'
+import mongoose from 'mongoose'
 
-import fs from "fs";
-import path from "path";
+import fs from 'fs'
+import path from 'path'
 
-const router = Router();
-const DATA_DIR = path.join(process.cwd(), "src/store/pokemon");
+const router = Router()
+const DATA_DIR = path.join(process.cwd(), 'src/store/pokemon')
 /*
 
 // ─────────────────────────────
@@ -97,25 +96,23 @@ router.get("/:bloc/:set/details", (req, res) => {
   const details = JSON.parse(fs.readFileSync(detailsPath, "utf-8"));
   res.json(details);
 }); */
-
-// GET /pokemon/:lang/blocks
-router.get("/:lang/blocks", async (req, res) => {
-  const { lang } = req.params; // 'fr', 'jp', etc.
+/*
+// GET /pokemon/:lang/blocs
+router.get('/:lang/blocs', async (req, res) => {
+  const { lang } = req.params // 'fr', 'jp', etc.
 
   try {
-    const dbName = `pokemon_${lang}`; // construit le nom de la DB dynamiquement
+    const dbName = `pokemon_${lang}` // construit le nom de la DB dynamiquement
     const BlockModel = mongoose.connection
       .useDb(dbName)
-      .model("Block", BlockSchema);
+      .model('Block', BlockSchema)
 
-    const blocks = await BlockModel.find().lean();
-    res.json(blocks);
+    const blocks = await BlockModel.find().lean()
+    res.json(blocks)
   } catch (err) {
-    console.error(`❌ Erreur récupération blocs ${req.params.lang}:`, err);
-    res
-      .status(500)
-      .json({ error: `Impossible de récupérer les blocs ${lang}` });
+    console.error(`❌ Erreur récupération blocs ${req.params.lang}:`, err)
+    res.status(500).json({ error: `Impossible de récupérer les blocs ${lang}` })
   }
-});
-
-export default router;
+})
+*/
+export default router

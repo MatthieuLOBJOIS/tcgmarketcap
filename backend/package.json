@@ -7,9 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/server.js",
     "dev": "node --watch src/server.js",
-    "update:pokemon": "node src/scripts/getCardsSetsBloc.js",
     "update:pricing": "node src/scripts/updatePricing.js",
-    "update:details": "node src/scripts/updateDetails.js"
+    "update:details": "node src/scripts/updateDetails.js",
+    "update:bloc": "node src/scripts/pokemon/updateBloc.js"
   },
   "keywords": [],
   "author": "",
