@@ -6,11 +6,13 @@ export const enrichCards = async (lang, set) => {
   const enrichedCards = await Promise.all(
     set.cards.map(async (card) => {
       const detailed = await tcgdex.card.get(card.card_id)
+
       return {
         ...card,
         category: detailed.category,
         rarity: detailed.rarity,
         illustrator: detailed.illustrator,
+        pricing: detailed.pricing.cardmarket,
         fullDetails: true,
       }
     })

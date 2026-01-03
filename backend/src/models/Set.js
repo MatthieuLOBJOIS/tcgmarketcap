@@ -9,6 +9,7 @@ const cardSchema = new mongoose.Schema({
   category: String,
   rarity: String,
   illustrator: String,
+  pricing: Object,
   fullDetails: { type: Boolean, default: false }, // indique si la carte a été enrichie
 })
 
